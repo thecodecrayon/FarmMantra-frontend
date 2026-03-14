@@ -47,73 +47,63 @@ export default function TextSection() {
   ];
 
   return (
-    <section className="relative py-15 overflow-hidden">
+    <section className="relative py-12 md:py-15 overflow-hidden">
       {/* Ambient Background */}
       <div className="absolute inset-0 bg-gray-100"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(251,146,60,0.1),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(251,113,133,0.1),transparent_50%)]"></div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Emotional Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-orange-100">
+        <div className="text-center mb-10 md:mb-20">
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full mb-4 md:mb-6 border border-orange-100">
             <Sparkles className="w-4 h-4 text-orange-500" />
             <span className="text-sm font-medium text-orange-900">
               Why Choose Us?
             </span>
           </div>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
             More Than Just
             <span className="block text-yellow-500">Shopping</span>
           </h2>
 
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-2">
             You're helping Radha, a mother of two, send her children to school.
             You're keeping 400-year-old weaving traditions alive. You're
             creating hope.
           </p>
         </div>
 
-        {/* Impact Cards - 3 Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {impactCards.map((card, index) => {
-            // const Icon = card.icon;
-            return (
-              <div
-                key={index}
-                className="group relative bg-white/80 backdrop-blur-md rounded-3xl p-8 border border-orange-100/50 hover:border-orange-200 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-100/50 flex flex-col"
-              >
-                {/* <div className="shrink-0 mb-6">
-                  <div
-                    className={`w-16 h-16 bg-linear-to-br ${card.gradient} rounded-2xl flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                </div> */}
-                <p className="font-bold text-5xl py-6 bg-linear-to-r from-orange-500 to-red-600 text-transparent bg-clip-text">
-                  {index + 1}.
-                </p>
+        {/* Impact Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {impactCards.map((card, index) => (
+            <div
+              key={index}
+              className="group relative bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-orange-100/50 hover:border-orange-200 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-100/50 flex flex-col"
+            >
+              <p className="font-bold text-4xl md:text-5xl py-4 md:py-6 bg-linear-to-r from-orange-500 to-red-600 text-transparent bg-clip-text">
+                {index + 1}.
+              </p>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-4 leading-tight">
-                  {card.title}
-                </h3>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+                {card.title}
+              </h3>
 
-                <p className="text-gray-600 leading-relaxed flex-1 italic">
-                  {card.description}
-                </p>
-              </div>
-            );
-          })}
+              <p className="text-gray-600 leading-relaxed flex-1 italic text-sm md:text-base">
+                {card.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* Emotional Close */}
-        <div className="text-center mt-16">
-          <div className="inline-block px-8 pt-8 md:px-8 md:pt-8 text-gray-800 max-w-3xl">
-            <p className="text-2xl md:text-3xl font-bold mb">
+        <div className="text-center mt-12 md:mt-16">
+          <div className="inline-block px-4 pt-6 sm:px-8 sm:pt-8 text-gray-800 max-w-3xl">
+            <p className="text-xl sm:text-2xl md:text-3xl font-bold mb-1">
               "When you choose us, we all rise together."
             </p>
-            <p className="text-gray-800 text-lg">
+            <p className="text-gray-800 text-base md:text-lg">
               — From every artisan, farmer, and creator we work with
             </p>
           </div>

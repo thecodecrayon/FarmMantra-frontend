@@ -33,8 +33,8 @@ const ShowItemsSection = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
-  const CARD_WIDTH = 320;
-  const GAP = 24;
+  const CARD_WIDTH = 280;
+  const GAP = 16;
   const SCROLL_AMOUNT = CARD_WIDTH + GAP;
 
   const handleNavigate = () => {
@@ -43,49 +43,46 @@ const ShowItemsSection = ({
 
   const handleScroll = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
-
-    const container = scrollContainerRef.current;
     const scrollAmount = direction === "left" ? -SCROLL_AMOUNT : SCROLL_AMOUNT;
-
-    container.scrollBy({
+    scrollContainerRef.current.scrollBy({
       left: scrollAmount,
       behavior: "smooth",
     });
   };
 
   return (
-    <div className={`py-16 ${bgColor}`}>
+    <div className={`py-10 md:py-16 ${bgColor}`}>
       {/* HEADER */}
-      <div className="px-6 md:px-12 lg:px-20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
-        <h3 className="text-3xl md:text-4xl font-bold text-gray-900">
+      <div className="px-4 sm:px-8 md:px-12 lg:px-20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4 mb-6 md:mb-8">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
           {title}
         </h3>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           {/* Navigation Arrows */}
           <button
             onClick={() => handleScroll("left")}
-            className="p-3 rounded-full border-2 border-gray-200 text-gray-600 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200"
+            className="p-2 md:p-3 rounded-full border-2 border-gray-200 text-gray-600 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200"
             aria-label="Scroll left"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={20} />
           </button>
 
           <button
             onClick={() => handleScroll("right")}
-            className="p-3 rounded-full border-2 border-gray-200 text-gray-600 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200"
+            className="p-2 md:p-3 rounded-full border-2 border-gray-200 text-gray-600 hover:border-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200"
             aria-label="Scroll right"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={20} />
           </button>
 
           {/* View All Button */}
           <button
             onClick={handleNavigate}
-            className="flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors ml-2"
+            className="flex items-center gap-1.5 md:gap-2 bg-gray-900 text-white px-4 md:px-6 py-2.5 md:py-3 rounded-full text-sm md:text-base font-semibold hover:bg-gray-800 transition-colors ml-1 md:ml-2"
           >
             View All
-            <ArrowRight size={18} />
+            <ArrowRight size={16} />
           </button>
         </div>
       </div>
@@ -93,10 +90,13 @@ const ShowItemsSection = ({
       {/* SLIDER */}
       <div
         ref={scrollContainerRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide scroll-smooth px-6 md:px-12 lg:px-20 pb-4"
+        className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth px-4 sm:px-8 md:px-12 lg:px-20 pb-4"
       >
         {items.map((item) => (
-          <div key={item.id} className="shrink-0 w-[320px]">
+          <div
+            key={item.id}
+            className="shrink-0 w-[260px] sm:w-[280px] md:w-[320px]"
+          >
             <ItemCard {...item} />
           </div>
         ))}

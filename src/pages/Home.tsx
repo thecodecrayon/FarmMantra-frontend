@@ -11,8 +11,6 @@ const bgColor = ["bg-gray-100", "bg-white"];
 
 const Home = () => {
   const { homescreenData } = useFetchHomeData();
-
-  console.log("homescreen data", homescreenData);
   return (
     <div className="relative">
       <Popup />
