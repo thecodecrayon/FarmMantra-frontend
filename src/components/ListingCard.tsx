@@ -19,9 +19,7 @@ const ListingCard = ({
   );
   const hasDiscount = discount && Number(discount) > 0;
 
-  const navigateToDetailPage = () => {
-    navigate(`/item/${id}`);
-  };
+  const navigateToDetailPage = () => navigate(`/item/${id}`);
 
   return (
     <div
@@ -30,7 +28,6 @@ const ListingCard = ({
     >
       {/* IMAGE */}
       <div className="relative overflow-hidden bg-gray-100 aspect-square">
-        {/* Loading skeleton */}
         {!imageLoaded && (
           <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse" />
         )}
@@ -49,18 +46,20 @@ const ListingCard = ({
           }`}
         />
 
-        {/* Favorite Button */}
+        {/* Favorite — always visible on touch devices, hover on desktop */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             setIsLiked(!isLiked);
           }}
-          className={`absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm ${
-            isLiked ? "bg-red-50" : "bg-white opacity-0 group-hover:opacity-100"
+          className={`absolute top-2.5 right-2.5 w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm ${
+            isLiked
+              ? "bg-red-50 opacity-100"
+              : "bg-white opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
           }`}
         >
           <Heart
-            size={16}
+            size={15}
             className={`transition-all duration-300 ${
               isLiked ? "fill-red-500 text-red-500" : "text-gray-600"
             }`}
@@ -69,8 +68,8 @@ const ListingCard = ({
 
         {/* Discount Badge */}
         {hasDiscount && (
-          <div className="absolute top-3 left-3 px-2.5 py-1 bg-orange-500 rounded-lg">
-            <span className="text-xs font-bold text-white">
+          <div className="absolute top-2.5 left-2.5 px-2 py-0.5 sm:px-2.5 sm:py-1 bg-orange-500 rounded-lg">
+            <span className="text-[10px] sm:text-xs font-bold text-white">
               {discount}% OFF
             </span>
           </div>
@@ -78,27 +77,25 @@ const ListingCard = ({
       </div>
 
       {/* CONTENT */}
-      <div className="p-4">
-        {/* Title */}
-        <h3 className="font-semibold text-gray-900 leading-snug line-clamp-2 mb-3 group-hover:text-orange-600 transition-colors">
+      <div className="p-3 sm:p-4">
+        <h3 className="font-semibold text-gray-900 leading-snug line-clamp-2 mb-2 sm:mb-3 text-sm sm:text-base group-hover:text-orange-600 transition-colors">
           {title}
         </h3>
 
-        {/* Price & Link Row */}
-        <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between gap-2">
           <div>
             {hasDiscount && (
-              <span className="text-sm text-gray-400 line-through block">
+              <span className="text-xs text-gray-400 line-through block">
                 ₹{originalPrice.toLocaleString()}
               </span>
             )}
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-lg sm:text-xl font-bold text-gray-900">
               ₹{price.toLocaleString()}
             </span>
           </div>
 
-          <span className="text-sm font-medium text-gray-400 group-hover:text-orange-500 transition-colors">
-            View Details →
+          <span className="text-xs sm:text-sm font-medium text-gray-400 group-hover:text-orange-500 transition-colors shrink-0">
+            View →
           </span>
         </div>
       </div>
