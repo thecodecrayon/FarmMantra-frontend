@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
+import { PRODUCT_URLS } from "../api/url";
 
-const useFetchProductByCategory = (categoryId: string) => {
+const useFetchProductByCategory = (categoryId: string | undefined) => {
   const [records, setRecords] = useState<any>({});
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   const loadProductByCategory = useCallback(async () => {
+    if (!categoryId) {
+      console.log("No category Id present for the API request!");
+      return;
+    }
+
     try {
       setIsLoading(true);
 
-      const response = await fetch(
-        `http://localhost:8000/api/v1/product/category/${categoryId}`,
-      );
+      const response = await fetch(PRODUCT_URLS.BY_CATEGORY_ID(categoryId));
 
       const parsedResponse = await response.json();
 

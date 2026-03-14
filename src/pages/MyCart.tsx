@@ -15,7 +15,7 @@ const MyCart = () => {
     console.log("id", id, newQuantity, cart);
     if (newQuantity < 1) return;
     const items = cart.map((item: CartItem) =>
-      item.id === id ? { ...item, quantity: newQuantity } : item
+      item.id === id ? { ...item, quantity: newQuantity } : item,
     );
 
     addMultipleToCart(items);
@@ -40,7 +40,7 @@ const MyCart = () => {
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
-    0
+    0,
   );
   const discountAmount = (subtotal * discount) / 100;
   const shipping = subtotal > 500 ? 0 : 50;

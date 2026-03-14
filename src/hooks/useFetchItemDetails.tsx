@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { PRODUCT_URLS, VIEW_URLS } from "../api/url";
 
 const useFetchItemDetails = (productId: number) => {
   const [product, setProduct] = useState<any>({});
@@ -9,9 +10,7 @@ const useFetchItemDetails = (productId: number) => {
     try {
       setIsLoading(true);
 
-      const response = await fetch(
-        `http://localhost:8000/api/v1/product/${productId}`,
-      );
+      const response = await fetch(`${PRODUCT_URLS.BY_ID(productId)}`);
 
       const parsedResponse = await response.json();
 
@@ -30,9 +29,7 @@ const useFetchItemDetails = (productId: number) => {
 
   const incrementViewCount = useCallback(async () => {
     try {
-      const response = await fetch(
-        `http://localhost:8000/api/v1/view/${productId}`,
-      );
+      const response = await fetch(VIEW_URLS.BY_PRODUCT_ID(productId));
 
       const parsedResponse = await response.json();
 

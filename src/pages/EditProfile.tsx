@@ -13,7 +13,6 @@ import {
   ArrowLeft,
   Package,
   Shield,
-  Sparkles,
 } from "lucide-react";
 
 interface ProfileData {
@@ -220,13 +219,6 @@ const EditProfile: React.FC = () => {
     setEditData(profileData);
     setErrors({});
     setIsEditing(false);
-  };
-
-  const getCompletionPercentage = (): number => {
-    const filledFields = Object.values(profileData).filter((v) =>
-      v.trim()
-    ).length;
-    return Math.round((filledFields / fieldConfigs.length) * 100);
   };
 
   return (

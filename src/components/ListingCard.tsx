@@ -1,4 +1,4 @@
-import { Heart, ArrowRight } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { ListingCardProps } from "../types";
@@ -7,7 +7,7 @@ const ListingCard = ({
   id,
   title,
   image,
-  originalPrice,
+  originalPrice = 0,
   discount,
 }: Omit<ListingCardProps, "addToCart" | "isAddedToCart">) => {
   const [isLiked, setIsLiked] = useState(false);

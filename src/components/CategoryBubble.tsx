@@ -1,8 +1,5 @@
 import { Grid2X2 } from "lucide-react";
-import type { ComponentType } from "react";
 import { useNavigate } from "react-router-dom";
-
-type Icon = ComponentType;
 
 type Props = {
   image: string;

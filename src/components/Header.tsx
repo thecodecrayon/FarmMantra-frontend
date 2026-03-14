@@ -1,10 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { BellIcon, HandBagIcon } from "../icons";
-import useCart from "../context/useCart";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { cart } = useCart();
   // const itemsInCart = cart.length;
   // const navigateToCart = () => {
   //   navigate("/cart");

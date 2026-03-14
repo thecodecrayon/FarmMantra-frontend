@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { CATEGORY_URLS } from "../api/url";
 
 type CategoryDataType = {
   id: number;
   name: string;
   image: string;
   totalItems: number;
+  data?: any;
 };
 
 const useFetchCategoryData = () => {
@@ -16,7 +18,7 @@ const useFetchCategoryData = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch("http://localhost:8000/api/v1/category");
+      const response = await fetch(CATEGORY_URLS.BASE);
 
       const parsedResponse = await response.json();
 
@@ -25,7 +27,7 @@ const useFetchCategoryData = () => {
 
       const { data } = parsedResponse;
 
-      console.log("Data:", data);   
+      console.log("Data:", data);
 
       const filteredData = data.map((item: any) => ({
         id: item.id,

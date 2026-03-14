@@ -2,7 +2,6 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { ChevronDown, Check } from "lucide-react";
 import ListingCard from "../components/ListingCard";
-import useCart from "../context/useCart";
 import useFetchCategoryData from "../hooks/useFetchCategoryData";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
@@ -15,7 +14,7 @@ const AllProducts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { addToCart, isAddedToCart } = useCart();
+  // const { addToCart, isAddedToCart } = useCart();
   const { isLoading, error, categories } = useFetchCategoryData();
 
   // Get active category from URL params, null means "all"
@@ -81,15 +80,15 @@ const AllProducts = () => {
     setIsDropdownOpen(false);
   };
 
-  const handleAddToCart = (
-    event: React.MouseEvent<Element, MouseEvent>,
-    item: Product,
-  ) => {
-    event.stopPropagation();
-    if (!isAddedToCart(item.id)) {
-      addToCart({ ...item, quantity: 1 });
-    }
-  };
+  // const handleAddToCart = (
+  //   event: React.MouseEvent<Element, MouseEvent>,
+  //   item: Product,
+  // ) => {
+  //   event.stopPropagation();
+  //   if (!isAddedToCart(item.id)) {
+  //     addToCart({ ...item, quantity: 1 });
+  //   }
+  // };
 
   if (isLoading) return <Loading />;
   if (error) return <Error onRetry={() => navigate("/")} />;
@@ -199,15 +198,13 @@ const AllProducts = () => {
               <ListingCard
                 key={`${item.categoryId}-${item.id}`}
                 id={item.id}
-                addToCart={(event) => handleAddToCart(event, item)}
-                isAddedToCart={isAddedToCart}
                 title={item.title}
                 image={item.image}
-                unit={item.unit}
-                price={item.price}
-                pieces={item.pieces}
+                // unit={item.unit}
+                // price={item.price}
+                // pieces={item.pieces}
                 description={item.description}
-                sellData={item.sellData}
+                // sellData={item.sellData}
               />
             ))}
           </div>

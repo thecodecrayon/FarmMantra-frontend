@@ -46,9 +46,9 @@ type Props = {
 
 const HorizontalSlider = ({
   items,
-  Component,
+  // Component,
   sliderData,
-  operations,
+  // operations,
 }: Props) => {
   const { currentIndex, itemsPerView } = sliderData;
 
@@ -74,13 +74,13 @@ const HorizontalSlider = ({
                   minWidth: "208px",
                 }}
               >
-                <Component
+                {/* <Component
                   {...item}
-                  isAddedToCart={operations?.isAddedToCart}
+                  // isAddedToCart={operations?.isAddedToCart}
                   handleAddToCart={(
-                    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+                    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
                   ) => operations?.handleAddToCart(event, item)}
-                />
+                /> */}
               </div>
             ))}
           </div>

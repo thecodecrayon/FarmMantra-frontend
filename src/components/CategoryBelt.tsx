@@ -10,10 +10,15 @@ const CategoryBelt = ({ items }: { items: Item[] }) => {
   return (
     <div className="px-25 py-15 flex gap-5">
       {items?.length &&
-        items?.map((item: Item, idx: number) => {
+        items?.map((item: Item) => {
           const link = !item.id ? "/categories" : `/categories/${item.id}`;
           return (
-            <CategoryBubble image={item.image} title={item.name} link={link} />
+            <CategoryBubble
+              key={item.id}
+              image={item.image}
+              title={item.name}
+              link={link}
+            />
           );
         })}
     </div>

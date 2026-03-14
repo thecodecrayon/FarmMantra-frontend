@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { HOMESCREEN_URLS } from "../api/url";
 
 type CategoryDataType = {
   id: number;
   name: string;
   image: string;
+  data?: any;
 };
 
 type ArtisanType = {
@@ -47,7 +49,7 @@ const useFetchHomeData = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch("http://localhost:8000/api/v1/homescreen");
+      const response = await fetch(HOMESCREEN_URLS.BASE);
 
       const parsedResponse = await response.json();
 

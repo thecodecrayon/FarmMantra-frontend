@@ -8,12 +8,15 @@ export type Product = {
   title: string;
   description: string;
   image: string;
-  originalPrice: number;
-  discount: number;
+  originalPrice?: number;
+  discount?: number;
 };
 
 export type CartItem = Product & {
   quantity: number;
+  price: number;
+  pieces: number;
+  unit: number;
 };
 
 export type ListingCardProps = Product & {

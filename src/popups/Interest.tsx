@@ -12,8 +12,8 @@ const InterestPopup = ({
   onClose: () => void;
   productName: string;
   productId: string;
-}) => {   
-  const { error, isLoading, createNewInquiry } = useCreateInquiry();
+}) => {
+  const { createNewInquiry } = useCreateInquiry();
 
   const [formData, setFormData] = useState({
     name: "",

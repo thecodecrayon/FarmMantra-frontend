@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { INQUIRY_URLS } from "../../api/url";
 
 type PayloadType = {
   name: string;
@@ -16,7 +17,7 @@ const useCreateInquiry = () => {
     try {
       setIsLoading(true);
 
-      const response = await fetch("http://localhost:8000/api/v1/inquiry", {
+      const response = await fetch(INQUIRY_URLS.BASE, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
