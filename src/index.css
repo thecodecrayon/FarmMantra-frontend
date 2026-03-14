@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Open Sans", "Roboto", sans-serif, Arial, Helvetica;
+  box-sizing: border-box;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+/* 
+.category-title,
+.listing-title {
+  font-family: "Roboto";
+} */
