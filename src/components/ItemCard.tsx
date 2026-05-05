@@ -13,7 +13,7 @@ const ItemCard = ({
   id,
   title,
   image,
-  contain = false,
+  contain = true,
   price,
   description,
 }: Props) => {
