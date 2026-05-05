@@ -604,57 +604,61 @@ const AgarbattiItems = [
 const GroceryItems = [
   {
     id: 1,
-    title: "Basmati Rice",
-    unit: "pkts",
-    price: 185,
-    pieces: 1,
+    title: "Awla Achaar",
+    unit: "gms",
+    contain: true,
+    price: 150,
+    pieces: 500,
     description:
-      "Premium long-grain basmati rice with aromatic fragrance, perfect for biryanis and daily meals.",
+      "Traditional amla achaar made with fresh Indian gooseberries, rich spices, and a tangy, bold flavor—perfect to complement everyday meals and add a zesty kick.",
     sellData: { sold: 114, total: 200 },
     image:
-      "https://www.kolkatarice.com/wp-content/uploads/2024/10/bg-rice-basmati-03.jpg",
+      "https://res.cloudinary.com/dqt5zwhrh/image/upload/v1777969555/7ced2c1a-b1cc-44cb-ba44-bd2c6b158a8d_dytpvk.jpg",
   },
   {
     id: 2,
-    title: "Whole Wheat Atta",
-    unit: "pkts",
-    price: 420,
-    pieces: 1,
+    title: "Turmeric Powder",
+    unit: "gm",
+    contain: true,
+    price: 100,
+    pieces: 200,
     description:
-      "Stone-ground whole wheat flour rich in fiber and nutrients for healthy rotis and parathas.",
-    sellData: { sold: 168, total: 250 },
+      "Pure turmeric powder with anti-inflammatory properties for cooking and health benefits.",
+    sellData: { sold: 97, total: 160 },
     image:
-      "https://cdnasd.countrydelight.in/cdproductimg/new-website/WHOLEWEATATTA-PDP-3.jpg_1724233965284.jpg",
+      "https://res.cloudinary.com/dqt5zwhrh/image/upload/v1777969556/b2165fa4-e20c-48c4-8f8f-41d939be08ae_npme2f.jpg",
   },
   {
     id: 3,
-    title: "Toor Dal",
-    unit: "pkts",
-    price: 145,
+    title: "Organic Honey",
+    unit: "kg",
+    price: 3000,
+    contain: true,
     pieces: 1,
     description:
-      "Premium quality toor dal with high protein content, ideal for traditional dal preparations.",
+      "Premium quality organic honey with high antioxidants, ideal for consumption and medicinal purposes.",
     sellData: { sold: 92, total: 180 },
     image:
-      "https://www.greendna.in/cdn/shop/files/toor-dal2_1024x1024@2x.jpg?v=1747065927",
+      "https://res.cloudinary.com/dqt5zwhrh/image/upload/v1777969556/773f7e62-d633-4f7d-a904-2b1bec9da625_a6ugh6.jpg",
   },
   {
     id: 4,
-    title: "Refined Sunflower Oil",
-    unit: "pkts",
-    price: 165,
+    title: "Mustard Oil",
+    unit: "kg",
+    price: 300,
+    contain: true,
     pieces: 1,
     description:
-      "Heart-healthy refined sunflower oil with vitamin E, perfect for cooking and frying.",
+      "Heart-healthy refined mustard oil with vitamin E, perfect for cooking and frying.",
     sellData: { sold: 201, total: 300 },
     image:
-      "https://ases.in/cdn/shop/files/1_7c9cf6f2-d570-4f62-9a2f-8bdcbb84927a.jpg?v=1714507689",
+      "https://res.cloudinary.com/dqt5zwhrh/image/upload/v1777969556/b00d2ac3-384d-44ac-99f6-bf198c446e8d_aqcccf.jpg",
   },
   {
     id: 5,
     title: "Organic Jaggery",
     unit: "pkts",
-    price: 95,
+    price: 100,
     pieces: 1,
     description:
       "Pure organic jaggery made from sugarcane juice, natural sweetener rich in iron and minerals.",
@@ -676,15 +680,15 @@ const GroceryItems = [
   },
   {
     id: 7,
-    title: "Turmeric Powder",
+    title: "Whole Wheat Atta",
     unit: "pkts",
-    price: 85,
+    price: 420,
     pieces: 1,
     description:
-      "Pure turmeric powder with anti-inflammatory properties for cooking and health benefits.",
-    sellData: { sold: 97, total: 160 },
+      "Stone-ground whole wheat flour rich in fiber and nutrients for healthy rotis and parathas.",
+    sellData: { sold: 168, total: 250 },
     image:
-      "https://m.media-amazon.com/images/I/51MV9JUTOIL._AC_UF1000,1000_QL80_.jpg",
+      "https://cdnasd.countrydelight.in/cdproductimg/new-website/WHOLEWEATATTA-PDP-3.jpg_1724233965284.jpg",
   },
   {
     id: 9,

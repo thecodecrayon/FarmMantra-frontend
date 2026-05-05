@@ -23,7 +23,7 @@ const Home = () => {
       <CategoryBelt items={homescreenData?.categories} />
 
       {/* {homescreenData.productsByCategory?.map((item: any, idx) => { */}
-      {homeData.map((item: any, idx) => {
+      {homescreenData.productsByCategory?.map((item: any, idx) => {
         if (item.data.length > 0) {
           return (
             <ShowItemsSection

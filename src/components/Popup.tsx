@@ -174,7 +174,7 @@ const Popup = () => {
           <div className="relative w-2/5 bg-gradient-to-br from-slate-100 to-slate-200">
             <div className="absolute inset-0 flex items-center justify-center p-6">
               <img
-                src="https://res.cloudinary.com/dbrffqvic/image/upload/v1770724531/hd-pic-DM_jgrd0i.jpg"
+                src="https://res.cloudinary.com/dqt5zwhrh/image/upload/v1777975948/Screenshot_2026-05-05_154145_adqtr9.png"
                 alt="District Magistrate Initiative"
                 className="w-full h-full object-contain"
               />

@@ -25,6 +25,28 @@ function formatToK(num: number) {
   return `${k}K+`;
 }
 
+function computeQuantityDisplay(
+  quantity: number,
+  quantityNote: string,
+): string {
+  if (!quantityNote) return `${quantity}`;
+
+  const match = quantityNote.match(/(\d+(?:\.\d+)?)\s*(kg|gms|gm|g)/i);
+  if (!match) return `${quantity}`;
+
+  const unitValue = parseFloat(match[1]);
+  const unit = match[2].toLowerCase();
+
+  const baseInGrams = unit === "kg" ? unitValue * 1000 : unitValue;
+  const totalGrams = baseInGrams * quantity;
+
+  if (totalGrams >= 1000) {
+    const kg = totalGrams / 1000;
+    return `${parseFloat(kg.toFixed(2))} kg`;
+  }
+  return `${totalGrams} gms`;
+}
+
 const ItemDetails = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -110,8 +132,10 @@ const ItemDetails = () => {
     );
   }
 
-  const discountedPrice =
-    product.price - (product.discountInPercent / 100) * product.price;
+  const hasDiscount = product.discountInPercent > 0;
+  const discountedPrice = hasDiscount
+    ? product.price - (product.discountInPercent / 100) * product.price
+    : product.price;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -168,10 +192,12 @@ const ItemDetails = () => {
                 />
               </button>
 
-              {/* Discount badge */}
-              <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-yellow-400 text-gray-900 font-bold px-2.5 py-1 rounded-full text-xs sm:text-sm">
-                {product.discountInPercent}% OFF
-              </div>
+              {/* Discount badge — hidden when 0 */}
+              {hasDiscount && (
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-yellow-400 text-gray-900 font-bold px-2.5 py-1 rounded-full text-xs sm:text-sm">
+                  {product.discountInPercent}% OFF
+                </div>
+              )}
             </div>
 
             {/* Thumbnail strip */}
@@ -214,17 +240,22 @@ const ItemDetails = () => {
                 <span className="text-3xl sm:text-4xl font-bold text-gray-900">
                   ₹{discountedPrice}
                 </span>
-                <span className="text-lg sm:text-xl text-gray-500 line-through">
-                  ₹{product.price}
-                </span>
-                <span className="ml-auto text-sm font-semibold text-green-600 bg-green-50 px-2.5 py-1 rounded-full">
-                  Save ₹{product.price - discountedPrice}
-                </span>
+                {hasDiscount && (
+                  <>
+                    <span className="text-lg sm:text-xl text-gray-500 line-through">
+                      ₹{product.price}
+                    </span>
+                    <span className="ml-auto text-sm font-semibold text-green-600 bg-green-50 px-2.5 py-1 rounded-full">
+                      Save ₹{product.price - discountedPrice}
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
             {/* Quantity + CTA */}
             <div className="space-y-3 sm:space-y-4">
+              {/* Counter row */}
               <div className="flex items-center gap-3">
                 <span className="text-gray-700 font-medium text-sm sm:text-base">
                   Quantity:
@@ -236,7 +267,7 @@ const ItemDetails = () => {
                   >
                     <Minus size={16} />
                   </button>
-                  <span className="w-12 sm:w-16 text-center font-bold text-base sm:text-lg">
+                  <span className="px-3 text-center font-bold text-base sm:text-lg">
                     {quantity}
                   </span>
                   <button
@@ -247,6 +278,24 @@ const ItemDetails = () => {
                   </button>
                 </div>
               </div>
+
+              {/* Quantity note */}
+              {product.quantityNote && (
+                <div className="flex items-center gap-2.5 bg-gray-50 border border-gray-200 rounded-xl px-3.5 py-2.5">
+                  <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full shrink-0" />
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    <span className="font-semibold text-gray-700">
+                      Per unit:
+                    </span>{" "}
+                    {product.quantityNote}
+                    <span className="mx-1.5 text-gray-300">·</span>
+                    <span className="font-semibold text-yellow-700">
+                      Total:{" "}
+                      {computeQuantityDisplay(quantity, product.quantityNote)}
+                    </span>
+                  </p>
+                </div>
+              )}
 
               <div className="flex gap-2 sm:gap-3">
                 <button
