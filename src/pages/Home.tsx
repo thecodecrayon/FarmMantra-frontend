@@ -3,7 +3,6 @@ import CategoryBelt from "../components/CategoryBelt";
 import FloatingSocials from "../components/FloatingSocials";
 import ShowItemsSection from "../components/ShowItemsSection";
 import TextSection from "../components/TextSection";
-import { homeData } from "../data";
 import useFetchHomeData from "../hooks/useFetchHomeData";
 import Popup from "../components/Popup";
 
