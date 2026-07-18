@@ -170,7 +170,7 @@ const ItemDetails = () => {
       price: discountedPrice,
       quantity,
       pieces,
-      unit,
+      unit: Number(unit),
     };
 
     addToCart(cartItem);
