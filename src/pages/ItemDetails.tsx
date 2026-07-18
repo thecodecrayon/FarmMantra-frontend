@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ArrowLeft,
   Heart,
@@ -11,13 +10,30 @@ import {
   PackageX,
   Loader2,
   MessageCircle,
-  Bell,
+  ShoppingCart,
+  Check,
   MapPin,
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetchItemDetails from "../hooks/useFetchItemDetails";
-import InterestPopup from "../popups/Interest";
 import InquiryPopup from "../popups/Inquirey";
+import useCart from "../context/useCart";
+import type { CartItem } from "../types";
+import { useState } from "react";
+
+function parsePackageSize(quantityNote?: string): {
+  pieces: number;
+  unit: string;
+} {
+  if (!quantityNote) return { pieces: 1, unit: "unit" };
+
+  const match = quantityNote.match(
+    /(\d+(?:\.\d+)?)\s*(kg|gms|gm|g|pcs|pieces|pack)/i,
+  );
+  if (!match) return { pieces: 1, unit: quantityNote };
+
+  return { pieces: parseFloat(match[1]), unit: match[2] };
+}
 
 function formatToK(num: number) {
   if (num < 1000) return num.toString();
@@ -55,7 +71,7 @@ const ItemDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [isWishlisted, setIsWishlisted] = useState(false);
   const [showInquiryPopup, setShowInquiryPopup] = useState(false);
-  const [showInterestPopup, setShowInterestPopup] = useState(false);
+  const { addToCart, isAddedToCart } = useCart();
 
   const updateQuantity = (newQuantity: number) => {
     if (newQuantity < 1) return;
@@ -137,22 +153,39 @@ const ItemDetails = () => {
     ? product.price - (product.discountInPercent / 100) * product.price
     : product.price;
 
+  const alreadyInCart = isAddedToCart(product.id);
+
+  const handleAddToCart = () => {
+    if (alreadyInCart) {
+      navigate("/cart");
+      return;
+    }
+
+    const { pieces, unit } = parsePackageSize(product.quantityNote);
+
+    const cartItem: CartItem = {
+      id: product.id,
+      title: product.name,
+      image: product.images?.[0] ?? "",
+      price: discountedPrice,
+      quantity,
+      pieces,
+      unit,
+    };
+
+    addToCart(cartItem);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <InquiryPopup
         isOpen={showInquiryPopup}
         onClose={() => setShowInquiryPopup(false)}
       />
-      <InterestPopup
-        isOpen={showInterestPopup}
-        onClose={() => setShowInterestPopup(false)}
-        productName={product.name}
-        productId={product.id}
-      />
 
       {/* ── Sticky top bar ── */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <button
             className="flex items-center gap-2 text-gray-900 hover:text-gray-400 transition-colors"
             onClick={navigateToHome}
@@ -161,6 +194,15 @@ const ItemDetails = () => {
             <span className="font-medium text-sm sm:text-base">
               Back to Shop
             </span>
+          </button>
+          <button
+            className="relative flex items-center gap-2 text-gray-900 hover:text-gray-400 transition-colors"
+            onClick={() => navigate("/cart")}
+          >
+            <ShoppingCart size={20} />
+            {alreadyInCart && (
+              <span className="absolute -top-1.5 -right-1.5 w-2.5 h-2.5 bg-yellow-400 rounded-full border border-white" />
+            )}
           </button>
         </div>
       </div>
@@ -299,11 +341,19 @@ const ItemDetails = () => {
 
               <div className="flex gap-2 sm:gap-3">
                 <button
-                  onClick={() => setShowInterestPopup(true)}
-                  className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3.5 sm:py-4 rounded-xl transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base"
+                  onClick={handleAddToCart}
+                  className={`flex-1 font-bold py-3.5 sm:py-4 rounded-xl transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base ${
+                    alreadyInCart
+                      ? "bg-green-100 text-green-700 border-2 border-green-300"
+                      : "bg-yellow-400 hover:bg-yellow-500 text-gray-900"
+                  }`}
                 >
-                  <Bell size={18} />
-                  I'm Interested
+                  {alreadyInCart ? (
+                    <Check size={18} />
+                  ) : (
+                    <ShoppingCart size={18} />
+                  )}
+                  {alreadyInCart ? "Go to Cart" : "Add to Cart"}
                 </button>
                 <button
                   onClick={() => setShowInquiryPopup(true)}

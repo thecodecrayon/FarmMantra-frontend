@@ -250,6 +250,7 @@ const MyCart = () => {
               {/* Checkout Button */}
               <button
                 disabled={cart.length === 0}
+                onClick={() => navigate("/checkout")}
                 className="w-full bg-yellow-400 hover:bg-yellow-500 disabled:bg-gray-300 disabled:cursor-not-allowed text-gray-900 font-bold py-4 rounded-xl transition-colors shadow-sm hover:shadow-md"
               >
                 Proceed to Checkout

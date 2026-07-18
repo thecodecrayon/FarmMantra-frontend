@@ -14,4 +14,7 @@ export const getEnvValue = (
 
 export const ENV = {
   API_BASE_URL: getEnvValue("API_BASE_URL"),
+  EMAILJS_SERVICE_ID: getEnvValue("EMAILJS_SERVICE_ID"),
+  EMAILJS_TEMPLATE_ID: getEnvValue("EMAILJS_TEMPLATE_ID"),
+  EMAILJS_PUBLIC_KEY: getEnvValue("EMAILJS_PUBLIC_KEY"),
 };

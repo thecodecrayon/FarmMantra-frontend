@@ -10,6 +10,7 @@ import CartProvider from "./context/CartProvider";
 import EditProfile from "./pages/EditProfile";
 import ViewProfile from "./pages/ViewProfile";
 import AllProducts from "./pages/AllProducts";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<MyCart />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route path="/profile/edit" element={<EditProfile />} />
             <Route path="/profile/view" element={<ViewProfile />} />
             <Route path="/about-us" element={<AboutUs />} />
