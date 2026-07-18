@@ -171,6 +171,7 @@ const ItemDetails = () => {
       quantity,
       pieces,
       unit: Number(unit),
+      description: product.description,
     };
 
     addToCart(cartItem);
