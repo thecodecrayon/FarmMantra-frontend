@@ -130,7 +130,6 @@ const Checkout = () => {
         throw new Error(errorBody?.msg || "Failed to save the order.");
       }
 
-      // ── Email notification via EmailJS ────────────────────────
       await emailjs.send(
         ENV.EMAILJS_SERVICE_ID as string,
         ENV.EMAILJS_TEMPLATE_ID as string,

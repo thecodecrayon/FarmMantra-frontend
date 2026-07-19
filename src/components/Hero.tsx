@@ -5,18 +5,18 @@ const Hero = () => {
       <div className="w-full md:flex-1 px-6 sm:px-10 md:pl-25 pt-14 pb-10 md:pt-0 md:pb-0 flex items-center justify-start">
         <div className="flex flex-col items-start justify-center gap-3 md:gap-4">
           <p className="text-base sm:text-lg md:text-[24px] font-medium text-gray-600">
-            #Big Mahotsav Sale
+            #Handcrafted with Heart
           </p>
           <div className="flex flex-col gap-2 md:gap-4">
             <h3 className="font-bold text-3xl sm:text-4xl md:text-6xl tracking-[-1px]">
-              Limited Time Offer!
+              Woven by Hands,
             </h3>
             <h3 className="font-bold text-3xl sm:text-4xl md:text-6xl tracking-[-1px]">
-              Up to <span className="italic">50%</span> OFF!
+              Rooted in Tradition
             </h3>
           </div>
           <p className="text-base sm:text-lg md:text-[24px] font-medium text-gray-600">
-            Decorate Your Home Everyday
+            Celebrating India's Rural Artistry
           </p>
         </div>
       </div>
@@ -24,16 +24,16 @@ const Hero = () => {
       {/* Image Side — hidden on mobile, visible on md+ */}
       <div className="hidden md:block md:flex-1 relative overflow-hidden">
         <img
-          src="https://chitrashila.com/cdn/shop/files/20250703_1406_Antique_Copper_Diyas_remix_01jz7pt51kepr92xkq3mkqbvfs_1.png?v=1760295921&width=2048"
-          className="w-64 h-64 rounded-2xl shadow-xl absolute top-34 right-28 rotate-1 z-20"
+          src="https://res.cloudinary.com/dqt5zwhrh/image/upload/v1784476052/Gemini_Generated_Image_il448uil448uil44_wx6agw.png"
+          className="w-64 h-64 rounded-2xl shadow-xl absolute top-34 right-32 rotate-4 z-20"
         />
         <img
-          src="https://m.media-amazon.com/images/I/61wAyNU8oZL._AC_UF894,1000_QL80_.jpg"
-          className="w-56 h-56 rounded-2xl shadow-2xl absolute top-10 right-56 -rotate-5 z-30"
+          src="https://res.cloudinary.com/dqt5zwhrh/image/upload/v1784476039/Gemini_Generated_Image_bcl0c0bcl0c0bcl0_xs0bfp.png"
+          className="w-56 h-56 rounded-2xl shadow-2xl absolute top-10 right-76 -rotate-5 z-30"
         />
         <img
-          src="https://imgcdn.floweraura.com/handmade-jazzy-terracotta-diyas-9834977gf-A_0.jpg"
-          className="w-56 h-56 rounded-2xl shadow-xl absolute bottom-12 right-80 rotate-3 z-10"
+          src="https://res.cloudinary.com/dqt5zwhrh/image/upload/v1784476061/Gemini_Generated_Image_umh1q4umh1q4umh1_gesgok.png"
+          className="w-56 h-56 rounded-2xl shadow-xl absolute bottom-14 right-90 rotate-3 z-10"
         />
       </div>
     </div>
