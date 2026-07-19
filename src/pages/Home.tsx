@@ -5,11 +5,13 @@ import ShowItemsSection from "../components/ShowItemsSection";
 import TextSection from "../components/TextSection";
 import useFetchHomeData from "../hooks/useFetchHomeData";
 import Popup from "../components/Popup";
+import ShowItemsSectionSkeleton from "../components/ShowItemSectionSkeleton";
 
 const bgColor = ["bg-gray-100", "bg-white"];
+const SKELETON_SECTION_COUNT = 2;
 
 const Home = () => {
-  const { homescreenData } = useFetchHomeData();
+  const { homescreenData, isLoading } = useFetchHomeData();
   return (
     <div className="relative">
       <Popup />
@@ -19,21 +21,27 @@ const Home = () => {
       <Hero />
 
       {/* CATEGORY BELT; */}
-      <CategoryBelt items={homescreenData?.categories} />
+      <CategoryBelt items={homescreenData?.categories} loading={isLoading} />
 
       {/* {homescreenData.productsByCategory?.map((item: any, idx) => { */}
-      {homescreenData.productsByCategory?.map((item: any, idx) => {
-        if (item.data.length > 0) {
-          return (
-            <ShowItemsSection
-              id={item.id}
-              title={item.title}
-              items={item.data}
-              bgColor={bgColor[idx % 2]}
-            />
-          );
-        }
-      })}
+      {isLoading
+        ? Array.from({ length: SKELETON_SECTION_COUNT }).map((_, idx) => (
+            <ShowItemsSectionSkeleton key={idx} bgColor={bgColor[idx % 2]} />
+          ))
+        : homescreenData?.productsByCategory?.map((item: any, idx: number) => {
+            if (item.data.length > 0) {
+              return (
+                <ShowItemsSection
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  items={item.data}
+                  bgColor={bgColor[idx % 2]}
+                />
+              );
+            }
+            return null;
+          })}
 
       <TextSection />
     </div>
