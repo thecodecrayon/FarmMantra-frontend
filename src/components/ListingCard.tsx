@@ -17,7 +17,7 @@ const ListingCard = ({
   const price = Math.round(
     originalPrice - (Number(discount) / 100) * Number(originalPrice),
   );
-  const hasDiscount = discount && Number(discount) > 0;
+  const hasDiscount = Number(discount) > 0;
 
   const navigateToDetailPage = () => navigate(`/item/${id}`);
 
