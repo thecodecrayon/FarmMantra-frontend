@@ -69,7 +69,8 @@ export default function TextSection() {
           </h2>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-2">
-            You're helping Radha, a mother of two, send her children to school.
+            You're helping Kapil, a farmer growing his crops through honest,
+            sustainable practices, earn the fair price his hard work deserves.
             You're keeping 400-year-old weaving traditions alive. You're
             creating hope.
           </p>
