@@ -33,7 +33,7 @@ const CategoryListing = () => {
               {records?.name || "Products"}
             </h1>
 
-            {totalCount > 0 && (
+            {totalCount > 0 ? (
               <div className="flex items-baseline gap-3 lg:pb-3">
                 <span className="text-6xl md:text-7xl font-bold text-gray-200">
                   {String(totalCount).padStart(2, "0")}
@@ -42,7 +42,7 @@ const CategoryListing = () => {
                   {totalCount === 1 ? "piece" : "pieces"}
                 </span>
               </div>
-            )}
+            ) : null}
           </div>
 
           {/* Divider with dot */}
