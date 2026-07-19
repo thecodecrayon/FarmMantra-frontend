@@ -178,7 +178,7 @@ const ItemDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 pb-20 sm:pb-0">
       <InquiryPopup
         isOpen={showInquiryPopup}
         onClose={() => setShowInquiryPopup(false)}
@@ -340,7 +340,8 @@ const ItemDetails = () => {
                 </div>
               )}
 
-              <div className="flex gap-2 sm:gap-3">
+              {/* CTA row — desktop/tablet only. Mobile uses the sticky bottom bar. */}
+              <div className="hidden sm:flex gap-2 sm:gap-3">
                 <button
                   onClick={handleAddToCart}
                   className={`flex-1 font-bold py-3.5 sm:py-4 rounded-xl transition-all shadow-sm hover:shadow-md active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base ${
@@ -521,6 +522,30 @@ const ItemDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ── Sticky mobile CTA bar (mobile only) ── */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+        <div className="flex gap-2">
+          <button
+            onClick={handleAddToCart}
+            className={`flex-1 font-bold py-3.5 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2 text-sm ${
+              alreadyInCart
+                ? "bg-green-100 text-green-700 border-2 border-green-300"
+                : "bg-yellow-400 hover:bg-yellow-500 text-gray-900"
+            }`}
+          >
+            {alreadyInCart ? <Check size={18} /> : <ShoppingCart size={18} />}
+            {alreadyInCart ? "Go to Cart" : "Add to Cart"}
+          </button>
+          <button
+            onClick={() => setShowInquiryPopup(true)}
+            className="bg-gray-900 hover:bg-gray-800 text-white font-bold py-3.5 px-4 rounded-xl transition-all active:scale-95 flex items-center justify-center shrink-0"
+            aria-label="Inquiry"
+          >
+            <MessageCircle size={18} />
+          </button>
         </div>
       </div>
     </div>

@@ -11,11 +11,13 @@ import EditProfile from "./pages/EditProfile";
 import ViewProfile from "./pages/ViewProfile";
 import AllProducts from "./pages/AllProducts";
 import Checkout from "./pages/Checkout";
+import ScrollToTop from "./Layouts/ScrollToTop";
 
 const App = () => {
   return (
     <CartProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
