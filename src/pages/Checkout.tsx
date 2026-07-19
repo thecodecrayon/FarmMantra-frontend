@@ -55,6 +55,7 @@ const Checkout = () => {
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [orderTotal, setOrderTotal] = useState(0);
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -150,8 +151,9 @@ const Checkout = () => {
       );
 
       setOrderId(newOrderId);
+      setOrderTotal(total);
       setOrderPlaced(true);
-      addMultipleToCart([]); // clear the cart
+      addMultipleToCart([]);
     } catch (err) {
       console.error("Failed to place order:", err);
       alert("Something went wrong while placing your order. Please try again.");
@@ -177,7 +179,8 @@ const Checkout = () => {
             been confirmed.
           </p>
           <p className="text-gray-600 mb-6">
-            Pay ₹{total} on delivery. A confirmation email is on its way to you.
+            Pay ₹{orderTotal} on delivery. A confirmation email is on its way to
+            you.
           </p>
           <button
             onClick={() => navigate("/")}
@@ -446,8 +449,8 @@ const Checkout = () => {
               </button>
 
               <p className="text-xs text-gray-500 text-center mt-3">
-                By placing this order you agree to pay ₹{total} in cash upon
-                delivery.
+                By placing this order you agree to pay ₹{orderTotal} in cash
+                upon delivery.
               </p>
             </div>
           </div>
